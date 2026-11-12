@@ -18,7 +18,9 @@ A collection of advanced database projects demonstrating database design and mod
 
 2. [Portfolio 2: Query Optimisation](Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_README.md)
 
-3. Portfolio 3: Transactions and Concurrency
+3. 
+3. [Portfolio 3: Transactions and Concurrency](Osisiogu_Nnabugwu_301930508/portfolio-3-transactions-concurrency/Osisiogu_Nnabugwu_301930508_README.md)
+
 
 4. Portfolio 4: NoSQL and Advanced Data Models
 
