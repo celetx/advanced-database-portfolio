@@ -47,7 +47,7 @@ The existing relational database was reused throughout this portfolio to maintai
 
 Four SQL queries were developed to demonstrate the retrieval, joining, grouping, and aggregation of relational data.
 
-The SQL statements are available in [queries.sql](queries.sql).
+The SQL statements are available in [Osisiogu_Nnabugwu_301930508_queries.sql](Osisiogu_Nnabugwu_301930508_queries.sql).
 
 ### 3.1 Patient Appointments and Healthcare Providers
 
@@ -110,7 +110,7 @@ This command provides information about:
 - **Execution Time:** The time required to execute the query.
 - **Buffers:** Information about database blocks accessed during query execution.
 
-The initial performance tests were implemented in [performance_tests.sql](performance_tests.sql).
+The initial performance tests were implemented in [Osisiogu_Nnabugwu_301930508_performance_tests.sql](Osisiogu_Nnabugwu_301930508_performance_tests.sql).
 
 ### 4.1 Initial Baseline Testing
 
@@ -140,7 +140,7 @@ The results indicated that a larger dataset would be useful for evaluating the e
 
 To conduct more meaningful performance tests, a larger synthetic dataset was generated.
 
-The dataset generation process is documented in [generate_test_data.sql](generate_test_data.sql).
+The dataset generation process is documented in [Osisiogu_Nnabugwu_301930508_generate_test_data.sql](Osisiogu_Nnabugwu_301930508_generate_test_data.sql).
 
 The script was designed to add:
 
@@ -163,7 +163,7 @@ The larger dataset provided a more suitable environment for comparing sequential
 
 Before creating the optimisation indexes, two SQL queries were tested against the larger Appointments table.
 
-The queries are available in [large_dataset_baseline.sql](large_dataset_baseline.sql).
+The queries are available in [Osisiogu_Nnabugwu_301930508_large_dataset_baseline.sql](Osisiogu_Nnabugwu_301930508_large_dataset_baseline.sql).
 
 ### 6.1 Appointment Date Filtering
 
@@ -201,7 +201,7 @@ These results established the baseline against which the performance of indexed 
 
 To improve query performance, two B-tree indexes were created on the Appointments table.
 
-The implementation is available in [indexes.sql](indexes.sql).
+The implementation is available in [Osisiogu_Nnabugwu_301930508_indexes.sql](Osisiogu_Nnabugwu_301930508_indexes.sql).
 
 ### 7.1 Appointment Date Index
 
@@ -237,7 +237,7 @@ The database successfully confirmed the existence of both indexes, alongside the
 
 The original queries were executed again after indexing.
 
-The optimised query tests are available in [optimized_performance.sql](optimized_performance.sql).
+The optimised query tests are available in [Osisiogu_Nnabugwu_301930508_optimized_performance.sql](Osisiogu_Nnabugwu_301930508_optimized_performance.sql).
 
 ### 8.1 Appointment Date Query
 
@@ -350,7 +350,7 @@ sudo service postgresql start
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/queries.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_queries.sql
 ```
 
 ### Step 3: Run the initial performance tests
@@ -358,7 +358,7 @@ sudo -n runuser -u postgres -- psql \
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/performance_tests.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_performance_tests.sql
 ```
 
 ### Step 4: Generate the performance dataset
@@ -368,7 +368,7 @@ On a fresh database containing the original Portfolio 1 sample data, execute:
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/generate_test_data.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_generate_test_data.sql
 ```
 
 **Important:** This script should only be executed once for the intended dataset size because it inserts additional records each time it runs.
@@ -380,7 +380,7 @@ Before creating the optimisation indexes, run:
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/large_dataset_baseline.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_large_dataset_baseline.sql
 ```
 
 ### Step 6: Create the indexes
@@ -388,7 +388,7 @@ sudo -n runuser -u postgres -- psql \
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/indexes.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_indexes.sql
 ```
 
 ### Step 7: Execute the optimised queries
@@ -396,7 +396,7 @@ sudo -n runuser -u postgres -- psql \
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-2-query-optimisation/optimized_performance.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-2-query-optimisation/Osisiogu_Nnabugwu_301930508_optimized_performance.sql
 ```
 
 The new execution plans can then be compared with the baseline results to evaluate the effects of indexing.

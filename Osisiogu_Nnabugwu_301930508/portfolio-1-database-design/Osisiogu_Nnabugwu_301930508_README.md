@@ -66,7 +66,7 @@ These constraints help prevent invalid or inconsistent data.
 
 The database relationships are documented in:
 
-[View ER Diagram](ER_Diagram.md)
+[View ER Diagram](Osisiogu_Nnabugwu_301930508_ER_Diagram.md)
 
 ## 6. Database Normalisation
 
@@ -77,7 +77,7 @@ and Third Normal Form (3NF).
 The normalisation process reduces data duplication,
 improves consistency, and supports efficient maintenance.
 
-[Read Normalisation Documentation](normalisation.md)
+[Read Normalisation Documentation](Osisiogu_Nnabugwu_301930508_normalisation.md)
 
 ## 7. Implementation
 
@@ -85,10 +85,10 @@ PostgreSQL was configured using GitHub Codespaces.
 
 The following SQL scripts were developed:
 
-- `schema.sql`: Creates the initial three tables.
-- `schema_extension.sql`: Creates four additional tables.
-- `sample_data.sql`: Inserts fictional healthcare records.
-- `constraint_tests.sql`: Tests database integrity constraints.
+- `Osisiogu_Nnabugwu_301930508_schema.sql`: Creates the initial three tables.
+- `Osisiogu_Nnabugwu_301930508_schema_extension.sql`: Creates four additional tables.
+- `Osisiogu_Nnabugwu_301930508_sample_data.sql`: Inserts fictional healthcare records.
+- `Osisiogu_Nnabugwu_301930508_constraint_tests.sql`: Tests database integrity constraints.
 
 ### Database Creation
 
@@ -103,15 +103,15 @@ Execute the SQL scripts in this order:
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-1-database-design/schema.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-1-database-design/Osisiogu_Nnabugwu_301930508_schema.sql
 
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-1-database-design/schema_extension.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-1-database-design/Osisiogu_Nnabugwu_301930508_schema_extension.sql
 
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-1-database-design/sample_data.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-1-database-design/Osisiogu_Nnabugwu_301930508_sample_data.sql
 ```
 
 These commands should be run from the repository root.
@@ -138,7 +138,7 @@ To reproduce the tests:
 ```bash
 sudo -n runuser -u postgres -- psql \
 -d medicare_clinic_db -v ON_ERROR_STOP=1 \
--f portfolio-1-database-design/constraint_tests.sql
+-f Osisiogu_Nnabugwu_301930508/portfolio-1-database-design/Osisiogu_Nnabugwu_301930508_constraint_tests.sql
 ```
 
 ## 9. Practical Evidence
