@@ -31,3 +31,11 @@ A collection of advanced database projects demonstrating database design and mod
 [Combined three-page summary (PDF)](Osisiogu_Nnabugwu_301930508/final-documentation/Osisiogu_Nnabugwu_301930508_FinalSummary.pdf) · [Editable Word copy](Osisiogu_Nnabugwu_301930508/final-documentation/Osisiogu_Nnabugwu_301930508_FinalSummary.docx)
 
 Review the final document, including the individual reflection, before LMS submission.
+
+
+## Submission Files
+
+- [Portfolio ZIP](submission-package/Osisiogu_Nnabugwu_301930508.zip)
+- [Separate submission README](Osisiogu_Nnabugwu_301930508/Osisiogu_Nnabugwu_301930508_README.md)
+
+The ZIP contains the student folder, all five activities, final PDF/Word documentation and the submission README. Upload the ZIP and the separate Markdown README to their respective form fields. The form has not been submitted by this repository update.
