@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "name": "General Consultation",
+    "feeKobo": 500000,
+    "currency": "NGN"
+  },
+  {
+    "_id": 2,
+    "name": "Family Planning Consultation",
+    "feeKobo": 300000,
+    "currency": "NGN"
+  },
+  {
+    "_id": 3,
+    "name": "Blood Pressure Check",
+    "feeKobo": 150000,
+    "currency": "NGN"
+  },
+  {
+    "_id": 4,
+    "name": "Laboratory Investigation",
+    "feeKobo": 700000,
+    "currency": "NGN"
+  },
+  {
+    "_id": 5,
+    "name": "Follow-up Consultation",
+    "feeKobo": 250000,
+    "currency": "NGN"
+  }
+]

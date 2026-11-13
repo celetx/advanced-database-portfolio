@@ -1,0 +1,59 @@
+[
+  {
+    "_id": 1,
+    "fullName": "Ada Okeke",
+    "gender": "Female",
+    "phone": "08000000001",
+    "registrationDate": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "allergies": [
+      "Penicillin"
+    ],
+    "schemaVersion": 1
+  },
+  {
+    "_id": 2,
+    "fullName": "John Musa",
+    "gender": "Male",
+    "phone": "08000000002",
+    "registrationDate": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "allergies": [],
+    "schemaVersion": 1
+  },
+  {
+    "_id": 3,
+    "fullName": "Grace Bello",
+    "gender": "Female",
+    "phone": "08000000003",
+    "registrationDate": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "allergies": [],
+    "schemaVersion": 1
+  },
+  {
+    "_id": 4,
+    "fullName": "Samuel Ade",
+    "gender": "Male",
+    "phone": "08000000004",
+    "registrationDate": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "allergies": [],
+    "schemaVersion": 1
+  },
+  {
+    "_id": 5,
+    "fullName": "Fatima Ibrahim",
+    "gender": "Female",
+    "phone": "08000000005",
+    "registrationDate": {
+      "$date": "2026-10-01T00:00:00Z"
+    },
+    "allergies": [],
+    "schemaVersion": 1
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "_id": 1,
+    "patientId": 1,
+    "providerId": 1,
+    "appointmentDate": {
+      "$date": "2026-11-15T09:00:00Z"
+    },
+    "status": "Scheduled"
+  },
+  {
+    "_id": 2,
+    "patientId": 2,
+    "providerId": 2,
+    "appointmentDate": {
+      "$date": "2026-11-15T10:00:00Z"
+    },
+    "status": "Scheduled"
+  },
+  {
+    "_id": 3,
+    "patientId": 3,
+    "providerId": 1,
+    "appointmentDate": {
+      "$date": "2026-11-16T11:00:00Z"
+    },
+    "status": "Scheduled"
+  },
+  {
+    "_id": 4,
+    "patientId": 4,
+    "providerId": 3,
+    "appointmentDate": {
+      "$date": "2026-11-17T09:30:00Z"
+    },
+    "status": "Scheduled"
+  },
+  {
+    "_id": 5,
+    "patientId": 5,
+    "providerId": 2,
+    "appointmentDate": {
+      "$date": "2026-11-18T14:00:00Z"
+    },
+    "status": "Scheduled"
+  }
+]

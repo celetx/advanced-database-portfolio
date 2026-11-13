@@ -1,0 +1,188 @@
+[
+  {
+    "_id": 1,
+    "patientId": 1,
+    "providerId": 1,
+    "visitDate": {
+      "$date": "2026-10-15T09:00:00Z"
+    },
+    "status": "Completed",
+    "services": [
+      {
+        "serviceId": 1,
+        "name": "General Consultation",
+        "unitFeeKobo": 500000,
+        "quantity": 1
+      },
+      {
+        "serviceId": 3,
+        "name": "Blood Pressure Check",
+        "unitFeeKobo": 150000,
+        "quantity": 1
+      }
+    ],
+    "payments": [
+      {
+        "paymentId": 1,
+        "amountKobo": 650000,
+        "method": "Cash",
+        "status": "Completed",
+        "paymentDate": {
+          "$date": "2026-10-15T09:00:00Z"
+        }
+      }
+    ],
+    "clinicalNotes": {
+      "summary": "Fictional teaching encounter",
+      "vitals": {
+        "systolic": 120,
+        "diastolic": 80
+      }
+    },
+    "schemaVersion": 1
+  },
+  {
+    "_id": 2,
+    "patientId": 2,
+    "providerId": 2,
+    "visitDate": {
+      "$date": "2026-10-16T10:00:00Z"
+    },
+    "status": "Completed",
+    "services": [
+      {
+        "serviceId": 2,
+        "name": "Family Planning Consultation",
+        "unitFeeKobo": 300000,
+        "quantity": 1
+      }
+    ],
+    "payments": [
+      {
+        "paymentId": 2,
+        "amountKobo": 300000,
+        "method": "Transfer",
+        "status": "Completed",
+        "paymentDate": {
+          "$date": "2026-10-16T10:00:00Z"
+        }
+      }
+    ],
+    "clinicalNotes": {
+      "summary": "Fictional teaching encounter",
+      "vitals": {
+        "systolic": 121,
+        "diastolic": 80
+      }
+    },
+    "schemaVersion": 1
+  },
+  {
+    "_id": 3,
+    "patientId": 3,
+    "providerId": 1,
+    "visitDate": {
+      "$date": "2026-10-17T11:00:00Z"
+    },
+    "status": "Completed",
+    "services": [
+      {
+        "serviceId": 5,
+        "name": "Follow-up Consultation",
+        "unitFeeKobo": 250000,
+        "quantity": 1
+      }
+    ],
+    "payments": [
+      {
+        "paymentId": 3,
+        "amountKobo": 250000,
+        "method": "Card",
+        "status": "Completed",
+        "paymentDate": {
+          "$date": "2026-10-17T11:00:00Z"
+        }
+      }
+    ],
+    "clinicalNotes": {
+      "summary": "Fictional teaching encounter",
+      "vitals": {
+        "systolic": 122,
+        "diastolic": 80
+      }
+    },
+    "schemaVersion": 1
+  },
+  {
+    "_id": 4,
+    "patientId": 4,
+    "providerId": 3,
+    "visitDate": {
+      "$date": "2026-10-18T09:30:00Z"
+    },
+    "status": "Completed",
+    "services": [
+      {
+        "serviceId": 4,
+        "name": "Laboratory Investigation",
+        "unitFeeKobo": 700000,
+        "quantity": 1
+      }
+    ],
+    "payments": [
+      {
+        "paymentId": 4,
+        "amountKobo": 700000,
+        "method": "Transfer",
+        "status": "Completed",
+        "paymentDate": {
+          "$date": "2026-10-18T09:30:00Z"
+        }
+      }
+    ],
+    "clinicalNotes": {
+      "summary": "Fictional teaching encounter",
+      "vitals": {
+        "systolic": 123,
+        "diastolic": 80
+      }
+    },
+    "schemaVersion": 1
+  },
+  {
+    "_id": 5,
+    "patientId": 5,
+    "providerId": 2,
+    "visitDate": {
+      "$date": "2026-10-19T14:00:00Z"
+    },
+    "status": "Completed",
+    "services": [
+      {
+        "serviceId": 2,
+        "name": "Family Planning Consultation",
+        "unitFeeKobo": 300000,
+        "quantity": 1
+      }
+    ],
+    "payments": [
+      {
+        "paymentId": 5,
+        "amountKobo": 300000,
+        "method": "Cash",
+        "status": "Completed",
+        "paymentDate": {
+          "$date": "2026-10-19T14:00:00Z"
+        }
+      }
+    ],
+    "clinicalNotes": {
+      "summary": "Fictional teaching encounter",
+      "vitals": {
+        "systolic": 124,
+        "diastolic": 80
+      }
+    },
+    "schemaVersion": 1
+  }
+]

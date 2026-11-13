@@ -1,0 +1,17 @@
+[
+  {
+    "_id": 1,
+    "fullName": "Dr. James Okoro",
+    "speciality": "General Medicine"
+  },
+  {
+    "_id": 2,
+    "fullName": "Dr. Amina Yusuf",
+    "speciality": "Family Planning"
+  },
+  {
+    "_id": 3,
+    "fullName": "Dr. Peter Eze",
+    "speciality": "Laboratory Medicine"
+  }
+]
