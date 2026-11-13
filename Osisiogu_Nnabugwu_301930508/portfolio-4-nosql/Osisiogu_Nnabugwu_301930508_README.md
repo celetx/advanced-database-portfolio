@@ -12,10 +12,9 @@
 
 ## 1. Objectives and continuity
 
-This portfolio implements a MongoDB document model using fictional MediCare records, demonstrates CRUD operations, produces four aggregation reports, validates data rules and inspects a compound index plan. It compares document modelling with the PostgreSQL work in Portfolios 1–3 and evaluates advanced-model alternatives. All Portfolio 1–3 files remain unchanged.
+This portfolio implements a MongoDB document model using the fictional MediCare records, demonstrates the CRUD operations, generates 4 aggregation reports, enforces the data rules, and examines the compound index plan. It compares the document model against the PostgreSQL work in Portfolios 1-3 and examines several alternative models. All of the Portfolio 1-3 files are unchanged.
 
-No separate assessment rubric was supplied in the repository. Coverage follows the requested practical tasks; check any institution-specific submission requirements before submitting.
-
+There was no separate assessment rubric in the repository. The coverage is in line with the practical tasks requested. Check with your institution about their submission requirements.
 ## 2. Files and navigation
 
 Every newly submitted file follows `Osisiogu_Nnabugwu_301930508_DocumentType.extension`. This prefixed README is the entry point; the existing root README links here.
@@ -39,13 +38,14 @@ Every newly submitted file follows `Osisiogu_Nnabugwu_301930508_DocumentType.ext
 
 ## 3. Document model and fixture
 
-Five collections contain 5 patients, 3 providers, 5 catalogue services, 5 appointments and 5 visits. Visits embed 6 service lines and 5 payments. They reference patient/provider master records. Service names and fees within visits are historical snapshots; optional clinical notes illustrate flexible document content. Arrays are capped at 100 items per visit.
+5 collections contain 5 patients, 3 providers, 5 catalog services, 5 appointments, and 5 visits. The visits contain 6 service lines and 5 payments and reference the patient/provider master records. The service names and fees within the visits are historical snapshots, and the optional clinical notes demonstrate the flexibility of the document content. Arrays are capped at 100 items per visit.
 
-For example, visit 1 references patient 1 and provider 1 and contains General Consultation (500,000 kobo), Blood Pressure Check (150,000 kobo) and a Completed Cash payment of 650,000 kobo. Whole-kobo amounts avoid fractional binary currency arithmetic. Extended JSON `$date` values are parsed into BSON Date. Modelling.md explains UTC assumptions, fixed timestamps and other differences from the SQL defaults.
+
+For example, visit 1 references patient 1 and provider 1 and contains a General Consultation (500,000 kobo), a Blood Pressure Check (150,000 kobo), and a Completed Cash payment of 650,000 kobo. Whole kobo amounts are used to avoid any fractional binary currency arithmetic. The extended JSON $date values are parsed into BSON Date. Modeling.md contains details on the UTC assumptions, fixed timestamps, and other differences from the SQL defaults.
 
 ## 4. Reproduce using Docker (verified route)
 
-Requirements: Bash, Docker CLI, a running local Docker daemon accessible to the current user, and permission to pull `mongo:8.0.16`. MongoDB, mongosh, Node and Python need not be installed on the host for this route.
+Requirements: Bash, Docker CLI, a running local Docker daemon accessible to the current user, and permission to pull `mongo:8.0.16`. MongoDB, mongosh, Node, and Python need not be installed on the host for this route.
 
 From the repository root:
 
@@ -54,7 +54,7 @@ cd Osisiogu_Nnabugwu_301930508/portfolio-4-nosql
 bash Osisiogu_Nnabugwu_301930508_Run.sh
 ```
 
-The runner targets the local Unix Docker socket, starts a uniquely named disposable container with no external network or published ports, waits for MongoDB ping readiness, copies this directory, executes mongosh and removes the container on exit. Failures propagate as a nonzero exit code. Its temporary database is intentionally removed after the run. It does not modify PostgreSQL.
+The runner targets the local Unix Docker socket, starts up a uniquely named disposable container with no external network and no published ports, waits for MongoDB to be ping-ready, copies this directory, runs mongosh, and then removes the container on exit. Failures will be reported as a non-zero exit code. The temporary database is deliberately removed after the run. It does not touch PostgreSQL.
 
 To save a rerun without replacing submitted evidence:
 
@@ -82,30 +82,30 @@ Use a fresh mongosh session for the entry point. Individual JS files share helpe
 
 ## 6. CRUD and aggregation results
 
-CRUD.js inserts temporary appointment 9001, reads patient 1's appointments, conditionally updates Scheduled to Completed, reads the changed status, deletes the temporary document and verifies deletion. Tests check affected-document counts and resulting state.
+CRUD.js inserts temporary appointment 9001, reads patient 1's appointments, conditionally updates Scheduled to Completed, reads the changed status, deletes the temporary document, and verifies deletion. Tests check affected-document counts and resulting state.
 
 | Report | Pipeline features | Verified fixture result |
 |---|---|---|
 | Completed revenue by method | `$unwind`, `$match`, `$group`, `$sort` | Card NGN 2,500; Cash NGN 9,500; Transfer NGN 10,000 |
-| Service utilisation and billing | `$unwind`, `$group`, `$multiply` | Service IDs 1–5: quantities 1, 2, 1, 1, 1; billed NGN 22,000 |
+| Service utilization and billing | `$unwind`, `$group`, `$multiply` | Service IDs 1–5: quantities 1, 2, 1, 1, 1; billed NGN 22,000 |
 | Patient 1 visit history | `$match`, two `$lookup`s, `$unwind`, `$project`, `$sort` | Ada Okeke, Dr. James Okoro, one completed visit |
 | Provider workload | `$lookup` from providers, `$size` | Providers 1–3: 2, 2, 1 appointments |
 
-Billed charges derive from service snapshots; collected revenue derives from Completed payments. They happen to match in this fully paid fixture and must not be assumed equal for arbitrary records.
+Billed charges are derived from service snapshots; collected revenue is derived from completed payments. They happen to match in this fully paid fixture and must not be assumed equal for arbitrary records.
 
 ## 7. Verification and evidence
 
-The fresh recorded execution returned exit code 0, with **25 PASS assertions** and `ALL TESTS PASSED` on MongoDB 8.0.16. The raw log contains server version, UTC timestamp, all report outputs and full executionStats. Validators/unique indexes rejected duplicates, invalid/missing fields, negative price, invalid dates/statuses, zero service quantity and zero payment. Seed references passed audits. A controlled orphan was accepted, showing the absence of foreign-key enforcement, and then removed. The hinted patient/date index produced IXSCAN, one returned document, one examined key and one examined document. This tiny fixture is not a performance benchmark.
+The freshly recorded execution returned exit code 0, with **25 PASS assertions** and `ALL TESTS PASSED` on MongoDB 8.0.16. The raw log contains server version, UTC timestamp, all report outputs, and full executionStats. Validators/unique indexes rejected duplicates, invalid/missing fields, negative prices, invalid dates/statuses, zero service quantities, and zero payments. Seed references passed audits. A controlled orphan was accepted, showing the absence of foreign-key enforcement, and then removed. The hinted patient/date index produced IXSCAN, one returned document, one examined key, and one examined document. This tiny fixture is not a performance benchmark.
 
 - [CRUD and aggregation screenshot](screenshots/Osisiogu_Nnabugwu_301930508_CRUDAndAggregations.png)
 - [Validation and final verdict screenshot](screenshots/Osisiogu_Nnabugwu_301930508_ValidationResults.png)
 
-These are actual Chromium screenshots of unmodified saved mongosh output excerpts, visibly labelled as a browser log viewer. They are not live-terminal or Codespaces screenshots. Their displayed source SHA-256 matches EvidenceManifest.json. The validation image joins the validation section to the final index-test verdict; the full explain remains in ExecutionOutput.txt.
+These are actual Chromium screenshots of unmodified saved mongosh output excerpts, visibly labeled as a browser log viewer. They are not live-terminal or Codespaces screenshots. Their displayed source SHA-256 matches EvidenceManifest.json. The validation image joins the validation section to the final index-test verdict; the full explain remains in ExecutionOutput.txt.
 
-CaptureEvidence.py can recreate these screenshots from a successfully saved ExecutionOutput.txt. It requires Python, the Playwright package, an installed Chromium browser (default `/usr/bin/chromium`, configurable through CHROMIUM_PATH) and the local Docker image for digest inspection. These optional capture dependencies are separate from the database runner.
+CaptureEvidence.py can recreate these screenshots from a successfully saved ExecutionOutput.txt. It requires Python, the Playwright package, an installed Chromium browser (default `/usr/bin/chromium`, configurable through CHROMIUM_PATH), and the local Docker image for digest inspection. These optional capture dependencies are separate from the database runner.
 
 ## 8. Interpretation and limits
 
-Embedding simplifies encounter-local reads and atomic updates, but duplicates historical values and limits document growth. References avoid repeated identities but require application-managed integrity. Schema validation controls shape and local values without enforcing every business rule. Indexes should follow workloads and be measured with realistic data before claiming a speed improvement.
+Embedding simplifies the encounter of local reads and atomic updates, but at the cost of duplicating historical values and limiting document growth. References avoid duplicating identities but require application-managed integrity. Schema validation can enforce the document's shape and local values without enforcing every single business rule. Indexes should be tuned to the workloads and measured with real data before you can claim any speedup at all.
 
-No Codespaces execution, distributed transactions, failover, sharding, production security hardening, scale benchmark or new PostgreSQL execution is claimed. Verification.md records the remaining manual checks. AI assistance and the reconstruction after workspace replacement are disclosed in AIUseDeclaration.md.
+No Codespaces execution, no distributed transactions, no failover, no sharding, no production security hardening, no scale benchmark, and no new PostgreSQL execution is claimed. The remaining manual checks are recorded in Verification.md. AI assistance and the reconstruction following workspace replacement are detailed in AIUseDeclaration.md.
