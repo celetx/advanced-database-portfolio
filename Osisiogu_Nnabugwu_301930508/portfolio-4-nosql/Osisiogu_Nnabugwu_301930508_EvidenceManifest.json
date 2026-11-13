@@ -1,0 +1,14 @@
+{
+  "log": "Osisiogu_Nnabugwu_301930508_ExecutionOutput.txt",
+  "sha256": "0b8aae6432cff2e8b072dfdcbc04d593486fc2a1af1df1af9c34937c0fa2cc0b",
+  "capture": "Chromium/Playwright screenshots of actual saved mongosh stdout excerpts; not Codespaces or live terminal screenshots",
+  "runCommand": "bash Osisiogu_Nnabugwu_301930508_Run.sh",
+  "image": "mongo:8.0.16",
+  "imageDigest": "mongo@sha256:4b58ebcb1dc7a7b4e84cd8ce9098d48764ae4478876898ff9551acf2ac4a6a6d",
+  "assertionCount": 25,
+  "runTimestampUTC": "2026-11-13T06:30:36.648Z",
+  "screenshots": [
+    "Osisiogu_Nnabugwu_301930508_CRUDAndAggregations.png",
+    "Osisiogu_Nnabugwu_301930508_ValidationResults.png"
+  ]
+}
