@@ -1,0 +1,195 @@
+16.11-bookworm: Pulling from library/postgres
+cb31571efe69: Pulling fs layer
+4831516dd0cb: Pulling fs layer
+1dc660d92d1e: Pulling fs layer
+343edefd4488: Pulling fs layer
+28c4628bb902: Pulling fs layer
+8e2c6e662535: Pulling fs layer
+fd82c7e84e48: Pulling fs layer
+00dff38d0051: Pulling fs layer
+462f835eff3c: Pulling fs layer
+024e99ecf4af: Pulling fs layer
+9256ecf73e73: Pulling fs layer
+8b0ee077867c: Pulling fs layer
+220f2e4b9c0d: Pulling fs layer
+71f7fc88fabf: Pulling fs layer
+cb31571efe69: Download complete
+fd82c7e84e48: Download complete
+1dc660d92d1e: Download complete
+9256ecf73e73: Download complete
+343edefd4488: Download complete
+28c4628bb902: Download complete
+71f7fc88fabf: Download complete
+4831516dd0cb: Download complete
+8e2c6e662535: Download complete
+00dff38d0051: Download complete
+220f2e4b9c0d: Download complete
+462f835eff3c: Download complete
+8b0ee077867c: Download complete
+bb3ec4efd5ad: Download complete
+39bdcce4f63d: Download complete
+024e99ecf4af: Download complete
+1dc660d92d1e: Pull complete
+4831516dd0cb: Pull complete
+343edefd4488: Pull complete
+28c4628bb902: Pull complete
+8e2c6e662535: Pull complete
+fd82c7e84e48: Pull complete
+00dff38d0051: Pull complete
+462f835eff3c: Pull complete
+9256ecf73e73: Pull complete
+8b0ee077867c: Pull complete
+024e99ecf4af: Pull complete
+cb31571efe69: Pull complete
+71f7fc88fabf: Pull complete
+220f2e4b9c0d: Pull complete
+Digest: sha256:a2420e9555e2224583fe84d0bb3f0b967e69354ae3a0be55a9c14e251388c4eb
+Status: Downloaded newer image for postgres:16.11-bookworm
+docker.io/library/postgres:16.11-bookworm
+MediCare Portfolio 5 PostgreSQL | 2026-11-13T20:10:28.024066+00:00
+Docker server: 29.9.2-2
+PostgreSQL image: postgres@sha256:a2420e9555e2224583fe84d0bb3f0b967e69354ae3a0be55a9c14e251388c4eb
+postgres (PostgreSQL) 16.11 (Debian 16.11-1.pgdg12+1)
+
+=== SETUP AND CONNECTIONS ===
+waiting for server to start.... done
+server started
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+BEGIN
+INSERT 0 5
+INSERT 0 3
+INSERT 0 5
+INSERT 0 5
+INSERT 0 5
+INSERT 0 6
+INSERT 0 5
+COMMIT
+CREATE TABLE
+INSERT 0 3
+ALTER TABLE
+UPDATE 5
+ALTER TABLE
+CREATE INDEX
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+PASS: initial node is writable primary
+PASS: five fictional patients loaded
+PASS: completed payment revenue is NGN 22,000
+waiting for server to start.... done
+server started
+PASS: remote-clinic node is a physical standby
+MEASURED: initial_sync target=0/3000000 replay-catch-up-wait=100.661 ms (includes client/poll overhead)
+PASS: WAL streaming connection is asynchronous
+PASS: physical replication slot is active
+walreceiver|streaming|async|0/3000000|0/3000000|0/3000000|0/3000000|0|00:00:00.000058
+    database_name    | server_port | is_standby | read_only 
+---------------------+-------------+------------+-----------
+ medicare_portfolio5 |       55433 | t          | on
+(1 row)
+
+ branchid |   branchname   | visits 
+----------+----------------+--------
+        1 | MediCare Ikeja |      2
+        2 | MediCare Lekki |      2
+        3 | MediCare Abuja |      1
+(3 rows)
+
+ branchid |   branchname   | completed_revenue_ngn 
+----------+----------------+-----------------------
+        1 | MediCare Ikeja |               9000.00
+        2 | MediCare Lekki |               6000.00
+        3 | MediCare Abuja |               7000.00
+(3 rows)
+
+ accountid |     accountname     |  balance  
+-----------+---------------------+-----------
+         1 | Main Clinic Account | 100000.00
+         2 | Laboratory Account  |  50000.00
+(2 rows)
+Exact sorted-row content digests: {"appointments": "37b650da9b2780df688a4d81d4540d7d", "clinicaccounts": "dd0e01b05bad3a18a35926b266456fbc", "clinicbranches": "444aa917467dd1203802fe8e823960a8", "clinicvisits": "b5a1a5ac68a53bcc18ca1f58e651798a", "distributionevents": "d41d8cd98f00b204e9800998ecf8427e", "medicalservices": "efafad178687cc42c4766483805fd6b4", "patients": "c77c8a907db3917b2a5593c3f0c77765", "payments": "cdae195ed54618a0c3a1bc58bc71ab14", "providers": "3e06a84cdefcae9a290b864f727ae7c1", "visitservices": "4d1b5fd1040ea346ed921ce6067bbe66"}
+PASS: initial primary/standby consistency: content matches across all ten tables
+
+=== REPLICATED INSERTS, UPDATES AND TRANSACTIONS ===
+BEGIN
+INSERT 0 1
+UPDATE 1
+COMMIT
+MEASURED: insert_update target=0/30022C0 replay-catch-up-wait=120.195 ms (includes client/poll overhead)
+PASS: insert reaches remote-clinic standby
+PASS: patient update reaches remote-clinic standby
+BEGIN
+DO
+COMMIT
+ accountid |     accountname     | balance  
+-----------+---------------------+----------
+         1 | Main Clinic Account | 90000.00
+         2 | Laboratory Account  | 60000.00
+(2 rows)
+MEASURED: committed_transfer target=0/3002440 replay-catch-up-wait=99.889 ms (includes client/poll overhead)
+PASS: committed account transfer replays with expected balances
+PASS: replica preserves NGN 150,000 account total
+MEASURED: rolled_back_transfer target=0/30024F8 replay-catch-up-wait=94.173 ms (includes client/poll overhead)
+PASS: rolled-back transfer is absent from visible standby balances
+ERROR:  25006: cannot execute INSERT in a read-only transaction
+LOCATION:  PreventCommandIfReadOnly, utility.c:414
+PASS: standby rejects writes with SQLSTATE 25006
+Exact sorted-row content digests: {"appointments": "37b650da9b2780df688a4d81d4540d7d", "clinicaccounts": "147a60216274c40a0ddc4b5d9bb3f938", "clinicbranches": "444aa917467dd1203802fe8e823960a8", "clinicvisits": "b5a1a5ac68a53bcc18ca1f58e651798a", "distributionevents": "60d732649685ac8b3e521bf0dae04064", "medicalservices": "efafad178687cc42c4766483805fd6b4", "patients": "b4e0c965a6c1885378834324a46b7bd3", "payments": "cdae195ed54618a0c3a1bc58bc71ab14", "providers": "3e06a84cdefcae9a290b864f727ae7c1", "visitservices": "4d1b5fd1040ea346ed921ce6067bbe66"}
+PASS: after insert/update/transaction: content matches across all ten tables
+
+=== STANDBY INTERRUPTION AND CATCH-UP ===
+waiting for server to shut down.... done
+server stopped
+PASS: primary acknowledges write while asynchronous standby is stopped
+PASS: no active WAL sender after standby stops
+waiting for server to start.... done
+server started
+MEASURED: restart_catchup target=0/3002618 replay-catch-up-wait=105.765 ms (includes client/poll overhead)
+PASS: restarted standby catches up from retained WAL
+walreceiver|streaming|async|0/3002618|0/3002618|0/3002618|0/3002618|0|00:00:00.000677
+Exact sorted-row content digests: {"appointments": "37b650da9b2780df688a4d81d4540d7d", "clinicaccounts": "147a60216274c40a0ddc4b5d9bb3f938", "clinicbranches": "444aa917467dd1203802fe8e823960a8", "clinicvisits": "b5a1a5ac68a53bcc18ca1f58e651798a", "distributionevents": "71e70e0d0ebc945816491c18e10045e7", "medicalservices": "efafad178687cc42c4766483805fd6b4", "patients": "b4e0c965a6c1885378834324a46b7bd3", "payments": "cdae195ed54618a0c3a1bc58bc71ab14", "providers": "3e06a84cdefcae9a290b864f727ae7c1", "visitservices": "4d1b5fd1040ea346ed921ce6067bbe66"}
+PASS: after standby recovery: content matches across all ten tables
+
+=== PRIMARY FAILURE, READ AVAILABILITY AND MANUAL PROMOTION ===
+MEASURED: before_primary_failure target=0/3002618 replay-catch-up-wait=97.845 ms (includes client/poll overhead)
+waiting for server to shut down.... done
+server stopped
+PASS: old primary is stopped before promotion (lab fencing)
+PASS: standby serves existing reads while primary is unavailable
+waiting for server to promote.... done
+server promoted
+PASS: promoted standby becomes a writable primary
+PASS: new primary accepts post-promotion write
+PASS: pre-failure account balances survive controlled promotion
+
+=== FORMER PRIMARY REJOINS FROM A NEW BASE BACKUP ===
+waiting for server to start.... done
+server started
+PASS: former primary endpoint now runs a fresh standby
+MEASURED: rejoin_sync target=0/5000000 replay-catch-up-wait=136.222 ms (includes client/poll overhead)
+PASS: rejoined standby contains new-primary timeline write
+Exact sorted-row content digests: {"appointments": "37b650da9b2780df688a4d81d4540d7d", "clinicaccounts": "147a60216274c40a0ddc4b5d9bb3f938", "clinicbranches": "444aa917467dd1203802fe8e823960a8", "clinicvisits": "b5a1a5ac68a53bcc18ca1f58e651798a", "distributionevents": "ae665c0ab90094e0cef11bc41b3109cb", "medicalservices": "efafad178687cc42c4766483805fd6b4", "patients": "b4e0c965a6c1885378834324a46b7bd3", "payments": "cdae195ed54618a0c3a1bc58bc71ab14", "providers": "3e06a84cdefcae9a290b864f727ae7c1", "visitservices": "4d1b5fd1040ea346ed921ce6067bbe66"}
+PASS: after rejoin: content matches across all ten tables
+walreceiver|streaming|async|0/5000000|0/5000000|0/5000000|0/5000000|0|00:00:00.000065
+
+=== LOGICAL BACKUP AND RESTORE VALIDATION ===
+PASS: restored content matches: patients
+PASS: restored content matches: providers
+PASS: restored content matches: appointments
+PASS: restored content matches: clinicvisits
+PASS: restored content matches: medicalservices
+PASS: restored content matches: visitservices
+PASS: restored content matches: payments
+PASS: restored content matches: clinicbranches
+PASS: restored content matches: clinicaccounts
+PASS: restored content matches: distributionevents
+PASS: restored account total is NGN 150,000
+MEASUREMENTS_JSON: {"before_primary_failure": {"client_observed_wait_ms": 97.845, "target_lsn": "0/3002618"}, "committed_transfer": {"client_observed_wait_ms": 99.889, "target_lsn": "0/3002440"}, "initial_sync": {"client_observed_wait_ms": 100.661, "target_lsn": "0/3000000"}, "insert_update": {"client_observed_wait_ms": 120.195, "target_lsn": "0/30022C0"}, "manual_promotion": {"client_observed_elapsed_ms": 897.28, "scope": "stop + checks + manual promotion; not an automated failover SLA"}, "rejoin_sync": {"client_observed_wait_ms": 136.222, "target_lsn": "0/5000000"}, "restart_catchup": {"client_observed_wait_ms": 105.765, "target_lsn": "0/3002618"}, "rolled_back_transfer": {"client_observed_wait_ms": 94.173, "target_lsn": "0/30024F8"}}
+
+ALL PORTFOLIO 5 TESTS PASSED
