@@ -66,7 +66,7 @@ Every submitted file uses `Osisiogu_Nnabugwu_301930508_DocumentType.extension`. 
 | [Evaluation.md](Osisiogu_Nnabugwu_301930508_Evaluation.md), [Measurements.json](Osisiogu_Nnabugwu_301930508_Measurements.json) | Actual measurements, reliability results and interpretation |
 | [ExecutionOutput.txt](Osisiogu_Nnabugwu_301930508_ExecutionOutput.txt), [EvidenceManifest.json](Osisiogu_Nnabugwu_301930508_EvidenceManifest.json) | Actual recorded output, exit status, version/digest and provenance hashes |
 | [CaptureEvidence.py](Osisiogu_Nnabugwu_301930508_CaptureEvidence.py) | Optional genuine browser captures of recorded output |
-| [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md), [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) | QA record and reproducible file/link/hash/preservation checks |
+| [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) | Reproducible file/link/hash/preservation checks |
 | [References.md](Osisiogu_Nnabugwu_301930508_References.md), [AIUseDeclaration.md](Osisiogu_Nnabugwu_301930508_AIUseDeclaration.md) | Official sources and disclosure |
 | This README and four prefixed PNGs in `screenshots/` | Portfolio entry point and execution evidence |
 
@@ -167,7 +167,7 @@ The portfolio implements and verifies physical PostgreSQL replication, consisten
 
 ## 18. References and verification
 
-[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md) records QA and preservation. Marks cannot be allocated without the lecturer's actual rubric.
+[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) checks file integrity, links and preservation of earlier portfolios. Marks cannot be allocated without the lecturer's actual rubric.
 
 ## 19. AI assistance declaration
 
