@@ -26,7 +26,7 @@ The implementation is genuine PostgreSQL physical streaming replication between 
 - Measure replay catch-up behaviour without overstating performance results.
 - Design a proposed cloud architecture covering security, privacy, cost, backups and operations.
 
-No original lecturer rubric or mark allocation was found in the repository. [AssessmentChecklist.md](Osisiogu_Nnabugwu_301930508_AssessmentChecklist.md) maps the detailed task supplied by the user; it does not invent grading criteria.
+No original lecturer rubric or mark allocation was found in the repository. The implementation follows the supplied Portfolio 5 task requirements.
 
 ## 3. Distributed clinic problem
 
@@ -67,7 +67,6 @@ Every submitted file uses `Osisiogu_Nnabugwu_301930508_DocumentType.extension`. 
 | [ExecutionOutput.txt](Osisiogu_Nnabugwu_301930508_ExecutionOutput.txt), [EvidenceManifest.json](Osisiogu_Nnabugwu_301930508_EvidenceManifest.json) | Actual recorded output, exit status, version/digest and provenance hashes |
 | [CaptureEvidence.py](Osisiogu_Nnabugwu_301930508_CaptureEvidence.py) | Optional genuine browser captures of recorded output |
 | [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md), [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) | QA record and reproducible file/link/hash/preservation checks |
-| [AssessmentChecklist.md](Osisiogu_Nnabugwu_301930508_AssessmentChecklist.md) | Coverage against the supplied task and remaining manual checks |
 | [References.md](Osisiogu_Nnabugwu_301930508_References.md), [AIUseDeclaration.md](Osisiogu_Nnabugwu_301930508_AIUseDeclaration.md) | Official sources and disclosure |
 | This README and four prefixed PNGs in `screenshots/` | Portfolio entry point and execution evidence |
 
@@ -120,7 +119,7 @@ The cloud document discusses Nigerian NDPA/GAID obligations, sensitive healthcar
 
 A multi-container MongoDB exploration was started before the detailed preference for PostgreSQL arrived. It hit the execution host's Docker VFS disk limit and was set aside. The assessed PostgreSQL implementation uses one image/container and two database processes to keep resource needs manageable. The MongoDB exploration is not part of this submission.
 
-No lecturer rubric, cloud account binding or managed database credentials were available. The task therefore uses the supplied requirements as its coverage checklist and labels cloud steps as proposed. Official indexed NDPC final-GAID excerpts were available, while direct PDF fetching returned HTTP 403; the documentation reports that access limit rather than claiming a full legal review.
+No lecturer rubric, cloud account binding or managed database credentials were available. The task therefore uses the supplied requirements to define the implementation scope and labels cloud steps as proposed. Official indexed NDPC final-GAID excerpts were available, while direct PDF fetching returned HTTP 403; the documentation reports that access limit rather than claiming a full legal review.
 
 ## 14. Lessons and technical reflection
 
@@ -166,9 +165,9 @@ These are genuine Chromium screenshots of a plain, explicitly labelled browser l
 
 The portfolio implements and verifies physical PostgreSQL replication, consistency checks, read-only enforcement, short-outage recovery, controlled manual promotion, safe rejoin and logical restore using the MediCare dataset. It connects those results to a clearly separated proposed managed-cloud design while identifying what the single-host experiment cannot establish.
 
-## 18. References and assessment readiness
+## 18. References and verification
 
-[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [AssessmentChecklist.md](Osisiogu_Nnabugwu_301930508_AssessmentChecklist.md) maps the supplied task to evidence and remaining manual checks. [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md) records QA and preservation. Marks cannot be allocated without the lecturer's actual rubric.
+[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md) records QA and preservation. Marks cannot be allocated without the lecturer's actual rubric.
 
 ## 19. AI assistance declaration
 

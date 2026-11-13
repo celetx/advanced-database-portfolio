@@ -25,7 +25,7 @@ Validate.py checks Python AST syntax, Bash syntax, JSON, filename prefix, relati
 - The student's own Codespaces run of Portfolio 5; commands are provided in README.
 - Managed RDS provisioning and CloudVerification.sql against a real cloud endpoint; no account/credentials/resources were supplied or created.
 - Multi-host/AZ/geographic failures, WAN partitions, automatic failover/routing, multi-writer conflict resolution, long-outage slot exhaustion, cloud PITR, performance under realistic concurrency and production security/legal compliance.
-- Actual lecturer rubric/allocated marks and institutional AI-use rules; the supplied-task checklist is not a promise of assessment marks.
+- Actual lecturer rubric/allocated marks and institutional AI-use rules remain subject to student review.
 - Direct retrieval of the NDPC final GAID PDF returned HTTP 403; official indexed excerpts informed the proposed privacy considerations. Review the full current regulator text before a real deployment.
 
 After a local Codespaces reproduction, commit its prefixed output and genuine terminal screenshots separately and update verification wording based on the actual new result. Review the pull request before merging to main.
