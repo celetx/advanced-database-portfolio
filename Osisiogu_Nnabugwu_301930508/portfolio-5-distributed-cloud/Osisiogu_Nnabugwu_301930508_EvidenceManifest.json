@@ -1,0 +1,39 @@
+{
+  "status": "actual successful managed-cloud Docker execution; not a managed PostgreSQL deployment",
+  "runCommand": "bash Osisiogu_Nnabugwu_301930508_Run.sh",
+  "exitCode": 0,
+  "runTimestampUTC": "2026-11-13T07:50:27.457180+00:00",
+  "postgresqlVersion": "16.11",
+  "dockerImage": "postgres:16.11-bookworm",
+  "imageDigest": "postgres@sha256:a2420e9555e2224583fe84d0bb3f0b967e69354ae3a0be55a9c14e251388c4eb",
+  "logFile": "Osisiogu_Nnabugwu_301930508_ExecutionOutput.txt",
+  "logSHA256": "f94ab05b6b3996979b4b2868299d3be7247499e76ccf62b57abd130060d0cded",
+  "passAssertionCount": 37,
+  "sourceSHA256": {
+    "Osisiogu_Nnabugwu_301930508_Schema.sql": "3c348db474aefd083ab9ff9e18f23deb272a38aa16faf828555d120d0a0494b3",
+    "Osisiogu_Nnabugwu_301930508_SampleData.sql": "18bc75d2fa6019fa62ed3f92e28445f1d09a2d032641c038918f4206e0ccd24b",
+    "Osisiogu_Nnabugwu_301930508_Setup.sql": "44397d54eb74d1000ce9909c6f4712210a69f32b0886ebce7bca7e3a6acd39f9",
+    "Osisiogu_Nnabugwu_301930508_ReplicatedChanges.sql": "7b529e4eebc532a9ed6b6f5ce3d14a61c7f514cf8422575e376e56eb8a10afb5",
+    "Osisiogu_Nnabugwu_301930508_Transaction.sql": "a93c967f926ef41004eaec18b26642fa05d96d608a10ffe57aa5f4d7cc7071d9",
+    "Osisiogu_Nnabugwu_301930508_Queries.sql": "781661edb4af567f99333f8fb932518e891b312f9dc6bf6ba863b49a2daa4a44",
+    "Osisiogu_Nnabugwu_301930508_Primary.conf": "3516595667be6fe0d535d9c15c6bc8ee9881980e45a5b68c669daeddae32c1ba",
+    "Osisiogu_Nnabugwu_301930508_PgHba.conf": "6f2eb24ea510439dd5cc6b7e510e6ae33946591df8818c2d50e1f2a1e90b4ec0",
+    "Osisiogu_Nnabugwu_301930508_Run.py": "47ef1fb37b3252b2d7fd816785a7440344b83cb2cfe03ddb4eed7b92dca928f8",
+    "Osisiogu_Nnabugwu_301930508_Run.sh": "7f3a5fa646718e6d6c979187bf25df7a093874c322f680dd723fe4af2636fa1a"
+  },
+  "screenshots": {
+    "Osisiogu_Nnabugwu_301930508_SetupAndStreaming.png": "00a819603e394c0148e262e35982955df05f1d165807088988d14ebc378019a2",
+    "Osisiogu_Nnabugwu_301930508_ReplicatedChanges.png": "326f5dc6be8234af93a2336b33a5de185ac556d9bd66e22961c63fe4a64ab768",
+    "Osisiogu_Nnabugwu_301930508_PromotionAndRejoin.png": "a271d26797ac915833f97e18436766a3288e1335f4fb684cdb2944877f2dae8e",
+    "Osisiogu_Nnabugwu_301930508_RestoreAndVerdict.png": "e1f265cb978052e4f739864093e956a6c7017267ef07ada352e7445b6fa541a9"
+  },
+  "capture": "Chromium/Playwright screenshots of unmodified actual log sections in a labelled plain log viewer",
+  "untested": [
+    "CloudVerification.sql against a managed cloud database",
+    "student Codespaces execution",
+    "multi-host or multi-AZ failures",
+    "automatic failover",
+    "WAN performance",
+    "cloud PITR"
+  ]
+}
