@@ -23,4 +23,4 @@ A collection of advanced database projects demonstrating database design and mod
 
 4. [Portfolio 4: NoSQL and Advanced Data Models](Osisiogu_Nnabugwu_301930508/portfolio-4-nosql/Osisiogu_Nnabugwu_301930508_README.md)
 
-5. Portfolio 5: Distributed and Cloud Database
+5. [Portfolio 5: Distributed and Cloud Databases](Osisiogu_Nnabugwu_301930508/portfolio-5-distributed-cloud/Osisiogu_Nnabugwu_301930508_README.md)
