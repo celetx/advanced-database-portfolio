@@ -1,0 +1,331 @@
+Unable to find image 'mongo:8.0.16' locally
+8.0.16: Pulling from library/mongo
+17fe099874f1: Pulling fs layer
+20043066d3d5: Pulling fs layer
+0bb99e130a79: Pulling fs layer
+8ff060369d14: Pulling fs layer
+7174617ee6e3: Pulling fs layer
+430d7dd85da4: Pulling fs layer
+2a3db1edea82: Pulling fs layer
+edaea6857353: Pulling fs layer
+17fe099874f1: Download complete
+430d7dd85da4: Download complete
+0bb99e130a79: Download complete
+7174617ee6e3: Download complete
+8ff060369d14: Download complete
+6be38df5b5a0: Download complete
+511825401451: Download complete
+2a3db1edea82: Download complete
+20043066d3d5: Download complete
+edaea6857353: Download complete
+17fe099874f1: Pull complete
+20043066d3d5: Pull complete
+430d7dd85da4: Pull complete
+0bb99e130a79: Pull complete
+7174617ee6e3: Pull complete
+8ff060369d14: Pull complete
+2a3db1edea82: Pull complete
+edaea6857353: Pull complete
+Digest: sha256:4b58ebcb1dc7a7b4e84cd8ce9098d48764ae4478876898ff9551acf2ac4a6a6d
+Status: Downloaded newer image for mongo:8.0.16
+MediCare Portfolio 4 | 2026-11-13T07:21:12.565Z
+MongoDB server: 8.0.16
+
+=== Setup ===
+
+Seed counts
+{
+  "patients": 5,
+  "providers": 3,
+  "services": 5,
+  "appointments": 5,
+  "visits": 5
+}
+
+=== CRUD ===
+PASS: CREATE appointment 9001
+
+READ patient 1 appointments
+[
+  {
+    "_id": 1,
+    "appointmentDate": {
+      "$date": "2026-11-15T09:00:00Z"
+    },
+    "status": "Scheduled"
+  },
+  {
+    "_id": 9001,
+    "appointmentDate": {
+      "$date": "2026-11-20T09:00:00Z"
+    },
+    "status": "Scheduled"
+  }
+]
+PASS: READ inserted appointment
+PASS: UPDATE conditional status transition
+PASS: READ updated status
+PASS: DELETE temporary appointment
+PASS: READ confirms deletion
+
+=== Aggregations ===
+
+revenueByMethod
+[
+  {
+    "_id": "Card",
+    "totalKobo": 250000,
+    "paymentCount": 1
+  },
+  {
+    "_id": "Cash",
+    "totalKobo": 950000,
+    "paymentCount": 2
+  },
+  {
+    "_id": "Transfer",
+    "totalKobo": 1000000,
+    "paymentCount": 2
+  }
+]
+
+serviceUtilisation
+[
+  {
+    "_id": 1,
+    "quantity": 1,
+    "billedKobo": 500000
+  },
+  {
+    "_id": 2,
+    "quantity": 2,
+    "billedKobo": 600000
+  },
+  {
+    "_id": 3,
+    "quantity": 1,
+    "billedKobo": 150000
+  },
+  {
+    "_id": 4,
+    "quantity": 1,
+    "billedKobo": 700000
+  },
+  {
+    "_id": 5,
+    "quantity": 1,
+    "billedKobo": 250000
+  }
+]
+
+patientHistory
+[
+  {
+    "_id": 1,
+    "visitDate": {
+      "$date": "2026-10-15T09:00:00Z"
+    },
+    "status": "Completed",
+    "patient": "Ada Okeke",
+    "provider": "Dr. James Okoro"
+  }
+]
+
+providerWorkload
+[
+  {
+    "_id": 1,
+    "fullName": "Dr. James Okoro",
+    "appointmentCount": 2
+  },
+  {
+    "_id": 2,
+    "fullName": "Dr. Amina Yusuf",
+    "appointmentCount": 2
+  },
+  {
+    "_id": 3,
+    "fullName": "Dr. Peter Eze",
+    "appointmentCount": 1
+  }
+]
+
+=== Tests ===
+PASS: seed counts and CRUD cleanup
+PASS: revenue by method: NGN 22,000 total
+PASS: service quantities and historical billing
+PASS: patient history lookup
+PASS: provider workload including lookup
+PASS: duplicate primary key rejected
+PASS: negative fee rejected
+PASS: duplicate service name rejected
+PASS: missing and null patient fields rejected
+PASS: invalid date type rejected
+PASS: zero service quantity rejected
+PASS: zero payment rejected
+PASS: invalid appointment status rejected
+PASS: appointments references valid in seed data (application responsibility)
+PASS: visits references valid in seed data (application responsibility)
+PASS: embedded service references valid
+PASS: MongoDB accepts a syntactically valid orphan reference
+
+Hinted compound index explain (demonstration, not a speed benchmark)
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "medicare_portfolio4.appointments",
+    "parsedQuery": {
+      "$and": [
+        {
+          "patientId": {
+            "$eq": 1
+          }
+        },
+        {
+          "appointmentDate": {
+            "$gte": {
+              "$date": "2026-11-01T00:00:00Z"
+            }
+          }
+        }
+      ]
+    },
+    "indexFilterSet": false,
+    "queryHash": "7068755A",
+    "planCacheShapeHash": "7068755A",
+    "planCacheKey": "70D2CF89",
+    "optimizationTimeMillis": 0,
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "prunedSimilarIndexes": false,
+    "winningPlan": {
+      "isCached": false,
+      "stage": "FETCH",
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "patientId": 1,
+          "appointmentDate": 1
+        },
+        "indexName": "patient_appointment_date",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "patientId": [],
+          "appointmentDate": []
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "patientId": [
+            "[1, 1]"
+          ],
+          "appointmentDate": [
+            "[new Date(1793491200000), new Date(9223372036854775807)]"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 1,
+    "executionTimeMillis": 0,
+    "totalKeysExamined": 1,
+    "totalDocsExamined": 1,
+    "executionStages": {
+      "isCached": false,
+      "stage": "FETCH",
+      "nReturned": 1,
+      "executionTimeMillisEstimate": 0,
+      "works": 2,
+      "advanced": 1,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 0,
+      "restoreState": 0,
+      "isEOF": 1,
+      "docsExamined": 1,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 1,
+        "executionTimeMillisEstimate": 0,
+        "works": 2,
+        "advanced": 1,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "keyPattern": {
+          "patientId": 1,
+          "appointmentDate": 1
+        },
+        "indexName": "patient_appointment_date",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "patientId": [],
+          "appointmentDate": []
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "patientId": [
+            "[1, 1]"
+          ],
+          "appointmentDate": [
+            "[new Date(1793491200000), new Date(9223372036854775807)]"
+          ]
+        },
+        "keysExamined": 1,
+        "seeks": 1,
+        "dupsTested": 0,
+        "dupsDropped": 0
+      }
+    }
+  },
+  "queryShapeHash": "A6FBFB24C6D7BE6121FB6C4F7B5E5A687F06CE1B5C09AEE42F93907BCDA6C206",
+  "command": {
+    "find": "appointments",
+    "filter": {
+      "patientId": 1,
+      "appointmentDate": {
+        "$gte": {
+          "$date": "2026-11-01T00:00:00Z"
+        }
+      }
+    },
+    "hint": "patient_appointment_date",
+    "$db": "medicare_portfolio4"
+  },
+  "serverInfo": {
+    "host": "3fd618cdb632",
+    "port": 27017,
+    "version": "8.0.16",
+    "gitVersion": "ba70b6a13fda907977110bf46e6c8137f5de48f6"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+    "internalQueryFrameworkControl": "trySbeRestricted",
+    "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+  },
+  "ok": 1
+}
+PASS: hinted compound index scan
+PASS: indexed query returns expected appointment
+ALL TESTS PASSED
