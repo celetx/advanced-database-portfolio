@@ -10,7 +10,7 @@
 
 **Implementation:** PostgreSQL 16.11 · physical streaming replication · Bash/Python · Docker
 
-**Verified environment:** Managed Codex cloud execution host, not the student's Codespace or managed RDS
+**Verified environments:** Managed Codex cloud execution host and the student's GitHub Codespace. Managed RDS deployment remains proposed and untested.
 
 ## 1. Introduction and background
 
@@ -66,9 +66,10 @@ Every submitted file uses `Osisiogu_Nnabugwu_301930508_DocumentType.extension`. 
 | [Evaluation.md](Osisiogu_Nnabugwu_301930508_Evaluation.md), [Measurements.json](Osisiogu_Nnabugwu_301930508_Measurements.json) | Actual measurements, reliability results and interpretation |
 | [ExecutionOutput.txt](Osisiogu_Nnabugwu_301930508_ExecutionOutput.txt), [EvidenceManifest.json](Osisiogu_Nnabugwu_301930508_EvidenceManifest.json) | Actual recorded output, exit status, version/digest and provenance hashes |
 | [CaptureEvidence.py](Osisiogu_Nnabugwu_301930508_CaptureEvidence.py) | Optional genuine browser captures of recorded output |
-| [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md), [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) | QA record and reproducible file/link/hash/preservation checks |
+| [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) | Reproducible file/link/hash/preservation checks |
 | [References.md](Osisiogu_Nnabugwu_301930508_References.md), [AIUseDeclaration.md](Osisiogu_Nnabugwu_301930508_AIUseDeclaration.md) | Official sources and disclosure |
-| This README and four prefixed PNGs in `screenshots/` | Portfolio entry point and execution evidence |
+| [CodespacesExecution.txt](Osisiogu_Nnabugwu_301930508_CodespacesExecution.txt), [CodespacesTests.png](screenshots/Osisiogu_Nnabugwu_301930508_CodespacesTests.png) | Student Codespaces execution log and genuine terminal screenshot |
+| This README and five prefixed PNGs in `screenshots/` | Portfolio entry point and execution evidence |
 
 ## 7. Database setup
 
@@ -97,11 +98,13 @@ Each replay wait has a 30 second deadline; command failures and command mismatch
 
 ## 9. Actual results
 
-The recorded PostgreSQL run returned **exit code 0**, **37 PASS assertions** and `ALL PORTFOLIO 5 TESTS PASSED`. It used PostgreSQL 16.11 and the image digest recorded in EvidenceManifest.json. Completed revenue was NGN 22,000: Ikeja NGN 9,000, Lekki NGN 6,000 and Abuja NGN 7,000. Branch visits were 2, 2 and 1. All ten table content hashes matched at each quiescent comparison; all ten also matched after restore.
+The original managed-cloud PostgreSQL run returned **exit code 0**, **37 PASS assertions** and `ALL PORTFOLIO 5 TESTS PASSED`. It used PostgreSQL 16.11 and the image digest recorded in EvidenceManifest.json. Completed revenue was NGN 22,000: Ikeja NGN 9,000, Lekki NGN 6,000 and Abuja NGN 7,000. Branch visits were 2, 2 and 1. All ten table content hashes matched at each quiescent comparison; all ten also matched after restore.
 
-Client-observed catch-up waits in this run ranged from 77.380 to 104.023 ms. The measured stop/check/manual-promotion sequence took 516.259 ms. These values include command/polling overhead, are one run on loopback, and are not pure replication latency, a throughput benchmark or a cloud recovery SLA. [Evaluation.md](Osisiogu_Nnabugwu_301930508_Evaluation.md) and Measurements.json contain the exact observations and limits.
+Client-observed catch-up waits in the original managed-cloud run ranged from 77.380 to 104.023 ms. The measured stop/check/manual-promotion sequence took 516.259 ms. These values include command/polling overhead, are one run on loopback, and are not pure replication latency, a throughput benchmark or a cloud recovery SLA. [Evaluation.md](Osisiogu_Nnabugwu_301930508_Evaluation.md) and Measurements.json contain the exact observations and limits.
 
 The logged SQLSTATE 25006 error is expected evidence that the standby rejects writes; it is followed by a passing assertion. No unsuccessful PostgreSQL assertion is hidden in the submitted successful log.
+
+The student subsequently reproduced the lab in GitHub Codespaces. The [Codespaces execution log](Osisiogu_Nnabugwu_301930508_CodespacesExecution.txt) contains **37 PASS assertions** and ends with `ALL PORTFOLIO 5 TESTS PASSED`; the [terminal screenshot](screenshots/Osisiogu_Nnabugwu_301930508_CodespacesTests.png) shows the final results. That separate run recorded catch-up waits from 94.173 to 136.222 ms and a stop/check/manual-promotion sequence of 897.280 ms, including client and polling overhead. These are separate observations, not replacements for the original Measurements.json or evidence manifest. Codespaces execution does not establish a managed RDS deployment or multi-host fault tolerance.
 
 ## 10. Consistency, availability and fault tolerance
 
@@ -148,7 +151,7 @@ bash Osisiogu_Nnabugwu_301930508_Run.sh 2>&1 \
 
 The first run will pull postgres:16.11-bookworm if it's not already there. Docker is explicitly directed at the local Unix socket so the inherited remote-daemon settings won't have any effect on another machine. It requires no sudo, no local PostgreSQL install, no cloud account and no Python DB driver. The existing PostgreSQL service for the older portfolios is left completely untouched. On success the runner will end with ALL PORTFOLIO 5 TESTS PASSED.
 
-The student's Codespaces run of Portfolio 5 is still unverified until they run this command. Save that new log and any actual terminal screenshots under the same prefix, they should be kept separate from the cloud-host run that they actually submitted.
+The student has now successfully run this command in Codespaces and saved the prefixed execution log and terminal screenshot linked below. Future reruns can use the same command; the Codespaces evidence remains separate from the original managed-cloud run.
 Run static QA from this directory with:
 
 ```bash
@@ -164,7 +167,14 @@ Optional screenshot regeneration requires Python Playwright and installed Chromi
 - [Promotion and rejoin](screenshots/Osisiogu_Nnabugwu_301930508_PromotionAndRejoin.png)
 - [Restore and final verdict](screenshots/Osisiogu_Nnabugwu_301930508_RestoreAndVerdict.png)
 
-hese are genuine Chromium screenshots of a plain, explicitly labelled browser log viewer displaying unaltered sections of the actual recorded PostgreSQL stdout. They are not terminal screenshots and do not represent any form of Codespaces execution. Each one shows the source SHA-256. The screenshot/source hashes are in EvidenceManifest.json. The full raw log is the authoritative record. There are no generated illustrations presented as evidence of execution.
+These four images are genuine Chromium screenshots of a plain, explicitly labelled browser log viewer displaying unaltered sections of the original managed-cloud PostgreSQL stdout. They are not terminal screenshots or Codespaces evidence. Each shows the source SHA-256, and their hashes are in EvidenceManifest.json. The full original raw log is the authoritative record for that run.
+
+Additional student Codespaces evidence:
+
+- [Successful Codespaces execution log](Osisiogu_Nnabugwu_301930508_CodespacesExecution.txt)
+- [Genuine Codespaces terminal screenshot](screenshots/Osisiogu_Nnabugwu_301930508_CodespacesTests.png)
+
+The Codespaces screenshot is a separate terminal capture showing the restore checks and final success verdict; it is not one of the four browser log-viewer images. No generated illustration is presented as execution evidence.
 
 ## 17. Conclusion
 
@@ -172,7 +182,7 @@ The portfolio implements and validates physical PostgreSQL replication, consiste
 
 ## 18. References and verification
 
-[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [Verification.md](Osisiogu_Nnabugwu_301930508_Verification.md) records QA and preservation. Marks cannot be allocated without the lecturer's actual rubric.
+[References.md](Osisiogu_Nnabugwu_301930508_References.md) lists official PostgreSQL, AWS and NDPC sources. [Validate.py](Osisiogu_Nnabugwu_301930508_Validate.py) checks file integrity, relative links and preservation of the earlier portfolios. Marks cannot be allocated without the lecturer's actual rubric.
 
 ## 19. AI assistance declaration
 
