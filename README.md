@@ -30,4 +30,4 @@ A collection of advanced database projects demonstrating database design and mod
 
 [Combined three-page summary (PDF)](Osisiogu_Nnabugwu_301930508/final-documentation/Osisiogu_Nnabugwu_301930508_FinalSummary.pdf) · [Editable Word copy](Osisiogu_Nnabugwu_301930508/final-documentation/Osisiogu_Nnabugwu_301930508_FinalSummary.docx)
 
-Review the individual reflection in the draft before LMS submission.
+Review the final document, including the individual reflection, before LMS submission.
